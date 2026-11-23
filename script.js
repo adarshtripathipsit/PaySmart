@@ -1,8 +1,3 @@
-
-// =====================================
-// PAYSMART DATABASE (LOCAL STORAGE)
-// =====================================
-
 let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
 let totalBalance = localStorage.getItem("totalBalance");
@@ -14,16 +9,14 @@ if (totalBalance === null) {
     totalBalance = Number(totalBalance);
 }
 
-// Save data permanently in browser storage
+
 function saveData() {
     localStorage.setItem("transactions", JSON.stringify(transactions));
     localStorage.setItem("totalBalance", totalBalance);
 }
 
 
-// =====================================
-// CHATBOT
-// =====================================
+
 
 function sendMessage() {
 
@@ -75,9 +68,7 @@ function sendMessage() {
 }
 
 
-// =====================================
-// MAKE PAYMENT
-// =====================================
+
 
 function makePayment() {
 
@@ -120,7 +111,7 @@ function makePayment() {
         return;
     }
 
-    // Create transaction record
+    
     let transaction = {
         name: recipient,
         upi: upiId,
@@ -128,12 +119,12 @@ function makePayment() {
         date: new Date().toLocaleString()
     };
 
-    // Update balance and transaction history
+    
     totalBalance = totalBalance - amount;
 
     transactions.push(transaction);
 
-    // Save and refresh dashboard
+    
     saveData();
     displayTransactions();
     updateDashboardStats();
@@ -144,16 +135,14 @@ function makePayment() {
         amount + " paid to " + recipient +
         ". No real money was transferred.";
 
-    // Clear payment form
+    
     document.getElementById("recipient").value = "";
     document.getElementById("upiId").value = "";
     document.getElementById("amount").value = "";
 }
 
 
-// =====================================
-// DISPLAY TRANSACTION HISTORY
-// =====================================
+
 
 function displayTransactions() {
 
@@ -182,9 +171,7 @@ function displayTransactions() {
 }
 
 
-// =====================================
-// UPDATE DASHBOARD STATISTICS
-// =====================================
+
 
 function updateDashboardStats() {
 
@@ -205,9 +192,7 @@ function updateDashboardStats() {
 }
 
 
-// =====================================
-// VOICE ASSISTANT
-// =====================================
+
 
 function startVoice() {
 
@@ -247,9 +232,6 @@ function startVoice() {
 }
 
 
-// =====================================
-// DARK MODE
-// =====================================
 
 function toggleTheme() {
 
@@ -265,9 +247,69 @@ function toggleTheme() {
 }
 
 
-// =====================================
-// LOAD SAVED DATA WHEN PAGE OPENS
-// =====================================
 
 displayTransactions();
 updateDashboardStats();
+
+// ===============================
+// PAYSMART UPI RECEIVE PAYMENT
+// ===============================
+
+const myUPI = "9455020590@sbi";
+
+// Generate Dynamic UPI QR
+function generateUPIQR() {
+    const amount = Number(document.getElementById("receiveAmount").value);
+    const qrContainer = document.getElementById("upiQR");
+    const qrResult = document.getElementById("qrResult");
+
+    qrContainer.innerHTML = "";
+    qrResult.innerText = "";
+
+    if (!amount || amount <= 0) {
+        qrResult.innerText = "Please enter a valid amount.";
+        return;
+    }
+
+    const upiLink =
+        `upi://pay?pa=${encodeURIComponent(myUPI)}` +
+        `&pn=${encodeURIComponent("PaySmart")}` +
+        `&am=${amount.toFixed(2)}&cu=INR`;
+
+    new QRCode(qrContainer, {
+        text: upiLink,
+        width: 200,
+        height: 200
+    });
+
+    qrResult.innerText =
+        "Scan this QR code using any supported UPI app.";
+}
+
+// Copy UPI ID
+function copyMyUPI() {
+    navigator.clipboard.writeText(myUPI)
+        .then(() => {
+            alert("UPI ID copied: " + myUPI);
+        })
+        .catch(() => {
+            alert("Please copy your UPI ID manually: " + myUPI);
+        });
+}
+
+// Open UPI App
+function payUsingUPI() {
+    const amount = Number(document.getElementById("receiveAmount").value);
+
+    if (!amount || amount <= 0) {
+        alert("Please enter a valid amount first.");
+        return;
+    }
+
+    const upiLink =
+        `upi://pay?pa=${encodeURIComponent(myUPI)}` +
+        `&pn=${encodeURIComponent("PaySmart")}` +
+        `&am=${amount.toFixed(2)}&cu=INR`;
+
+    window.location.href = upiLink;
+}
