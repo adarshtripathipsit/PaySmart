@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI Assistant Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    
+    <aside class="sidebar">
+        <h1 class="logo">⚡ PaySmart</h1>
+
+        <nav>
+            <a href="#dashboard" class="active">🏠 Dashboard</a>
+            <a href="#payment">💳 Payments</a>
+            <a href="#assistant">🤖 AI Assistant</a>
+            <a href="#history">📜 Transactions</a>
+            <a href="#analytics">📊 Analytics</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="#settings">⚙️ Settings</a>
+            <p>Automated UPI Assistant</p>
+        </div>
+    </aside>
+
+    
+    <main class="main-content">
+
+        <div class="topbar" id="dashboard">
+            <div>
+                <h2>Dashboard</h2>
+                <p>Welcome back! Manage your payments easily.</p>
+            </div>
+            <div class="profile">
+                <span>🔔</span>
+                <strong>Adarsh Tripathi</strong>
+                <span>👤</span>
+            </div>
+            <button id="themeToggle" onclick="toggleTheme()">
+    🌙 Dark Mode
+</button>
+        </div>
+
+        <section class="banner">
+            <div>
+                <h2>Smart Payments Made Simple!</h2>
+                <p>Your personal AI-powered UPI payment assistant.</p>
+                <a href="#assistant" class="banner-btn">Chat with AI →</a>
+            </div>
+            <div class="banner-icon">💸</div>
+        </section>
+
+        <section class="stats">
+
+            <div class="stat-card purple">
+                <p>Total Demo Balance</p>
+                <h2 id="totalBalance">₹50,000</h2>
+                <small>Available demo balance</small>
+            </div>
+
+            <div class="stat-card white">
+                <p>Total Transactions</p>
+                <h2 id="totalTransactions">0</h2>
+                <small>Demo transactions</small>
+            </div>
+
+            <div class="stat-card white">
+                <p>Total Payments</p>
+                <h2 id="totalPayments">₹0</h2>
+                <small>Simulated payments</small>
+            </div>
+        </section>
+
+        
+        <section class="content-card" id="analytics">
+            <h2>Payment Analytics</h2>
+            <p class="muted">Demo payment activity</p>
+
+            <div class="chart">
+                <div class="bar" style="height:40%"></div>
+                <div class="bar" style="height:65%"></div>
+                <div class="bar" style="height:35%"></div>
+                <div class="bar" style="height:85%"></div>
+                <div class="bar" style="height:55%"></div>
+                <div class="bar" style="height:95%"></div>
+                <div class="bar" style="height:70%"></div>
+            </div>
+
+            <div class="chart-labels">
+                <span>Mon</span><span>Tue</span>
+                <span>Wed</span><span>Thu</span>
+                <span>Fri</span><span>Sat</span><span>Sun</span>
+            </div>
+        </section>
+
+       
+        <section class="content-card" id="payment">
+            <h2>💳 Make a Payment</h2>
+            <p class="muted">Prepare a secure demo payment.</p>
+
+            <div class="payment-form">
+                <label>Recipient Name</label>
+                <input type="text" id="recipient"
+                    placeholder="Enter recipient name">
+
+                <label>UPI ID</label>
+                <input type="text" id="upiId"
+                    placeholder="example@upi">
+
+                <label>Amount (₹)</label>
+                <input type="number" id="amount"
+                    placeholder="Enter amount" min="1">
+
+                <button onclick="makePayment()">
+                    Confirm Demo Payment →
+                </button>
+
+                <p id="paymentResult"></p>
+            </div>
+        </section>
+
+        
+        <section class="content-card" id="assistant">
+            <h2>🤖 AI Payment Assistant</h2>
+            <p class="muted">Ask me anything about your payments.</p>
+
+            <div id="chat">
+                <p class="bot">
+                    Hello Adarsh! Welcome to PaySmart.
+                    How can I help you today?
+                </p>
+            </div>
+
+            
+<div class="chat-input">
+    <input
+        type="text"
+        id="userInput"
+        placeholder="Type or speak your command..."
+        onkeydown="if(event.key==='Enter') sendMessage()"
+    >
+
+    <button onclick="sendMessage()">Send →</button>
+
+    <button onclick="startVoice()" title="Voice Assistant">
+        🎤
+    </button>
+</div>
+
+        </section>
+
+        <!-- TRANSACTION HISTORY -->
+        <section class="content-card" id="history">
+            <h2>📜 Recent Transactions</h2>
+            <p class="muted">Your simulated payment records.</p>
+
+            <div id="transactionList">
+                <p>No transactions yet.</p>
+            </div>
+        </section>
+
+        <footer id="settings">
+            PaySmart | Automated UPI Assistant
+            <br>
+     Adarsh Tripathi | 2501640100049
+        </footer>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

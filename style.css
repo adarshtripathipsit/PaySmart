@@ -1,0 +1,503 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f3f2fa;
+    color: #24213c;
+}
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 245px;
+    background: white;
+    padding: 30px 20px;
+    position: fixed;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #eeeafa;
+}
+
+.logo {
+    font-size: 25px;
+    color: #8247e5;
+    margin-bottom: 45px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar nav a,
+.sidebar-bottom a {
+    text-decoration: none;
+    color: #77758a;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: #eee5ff;
+    color: #8247e5;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+.sidebar-bottom p {
+    font-size: 11px;
+    color: #999;
+    margin: 20px 10px;
+}
+
+/* MAIN CONTENT */
+
+.main-content {
+    margin-left: 245px;
+    padding: 30px;
+    width: calc(100% - 245px);
+    max-width: 1450px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    gap: 15px;
+}
+
+.topbar h2 {
+    font-size: 25px;
+}
+
+.topbar p,
+.muted {
+    color: #9290a3;
+    font-size: 13px;
+    margin-top: 7px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    padding: 12px 17px;
+    border-radius: 12px;
+    font-size: 13px;
+}
+
+/* BANNER */
+
+.banner {
+    background: linear-gradient(120deg, #9148ef, #6434ca);
+    color: white;
+    border-radius: 18px;
+    padding: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    min-height: 185px;
+}
+
+.banner h2 {
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+.banner p {
+    color: #eee1ff;
+    margin-bottom: 22px;
+}
+
+.banner-btn {
+    display: inline-block;
+    background: white;
+    color: #7139cb;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 9px;
+    font-weight: 600;
+}
+
+.banner-icon {
+    font-size: 75px;
+}
+
+/* STATISTICS */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 18px #30205a0b;
+}
+
+.stat-card p {
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.stat-card h2 {
+    font-size: 27px;
+    margin-bottom: 9px;
+}
+
+.stat-card small {
+    font-size: 12px;
+}
+
+.purple {
+    background: linear-gradient(130deg, #9149ef, #6436c9);
+    color: white;
+}
+
+.white {
+    background: white;
+    color: #30264d;
+}
+
+/* CONTENT CARDS */
+
+.content-card {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 20px #30205a0b;
+}
+
+.content-card h2 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+/* CHART */
+
+.chart {
+    height: 170px;
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+    gap: 18px;
+    padding: 20px 10px 0;
+    margin-top: 15px;
+    border-bottom: 1px solid #e8e5f0;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 39px,
+        #eeeaf5 40px
+    );
+}
+
+.bar {
+    width: 8%;
+    max-width: 55px;
+    background: linear-gradient(180deg, #a66aff, #7040d4);
+    border-radius: 8px 8px 0 0;
+    transition: 0.3s;
+}
+
+.bar:hover {
+    background: #4f2aa9;
+}
+
+.chart-labels {
+    display: flex;
+    justify-content: space-around;
+    color: #999;
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+/* PAYMENT FORM */
+
+.payment-form {
+    max-width: 550px;
+    margin-top: 22px;
+}
+
+.payment-form label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 15px 0 8px;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #e1ddeb;
+    border-radius: 9px;
+    background: #fcfbff;
+    outline: none;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: #8b4de8;
+    box-shadow: 0 0 0 3px #8b4de81a;
+}
+
+button {
+    background: linear-gradient(120deg, #9149ef, #6436c9);
+    color: white;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 17px;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px #8044dc40;
+}
+
+#paymentResult {
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* CHAT */
+
+#chat {
+    height: 260px;
+    overflow-y: auto;
+    background: #faf9ff;
+    border: 1px solid #eeeaf7;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 18px;
+}
+
+.bot, .user {
+    padding: 13px;
+    margin: 10px 0;
+    max-width: 85%;
+    border-radius: 11px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.bot {
+    background: #eee6ff;
+    color: #6038a6;
+}
+
+.user {
+    background: #e0f6eb;
+    color: #19744c;
+    margin-left: auto;
+    text-align: right;
+}
+
+.chat-input {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.chat-input input {
+    flex: 1;
+    min-width: 0;
+}
+
+.chat-input button {
+    margin-top: 0;
+}
+
+/* TRANSACTIONS */
+
+.transaction-item {
+    background: #f7f3ff;
+    padding: 16px;
+    margin: 12px 0;
+    border-left: 4px solid #8247e5;
+    border-radius: 9px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+    line-height: 1.8;
+    padding: 20px;
+}
+
+/* MOBILE */
+
+@media(max-width: 850px) {
+
+    .sidebar {
+        width: 190px;
+    }
+
+    .main-content {
+        margin-left: 190px;
+        width: calc(100% - 190px);
+        padding: 20px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 600px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .banner h2 {
+        font-size: 21px;
+    }
+
+    .banner-icon {
+        font-size: 45px;
+    }
+
+    .banner {
+        padding: 22px;
+    }
+
+    .chat-input {
+        flex-direction: column;
+    }
+
+    .chat-input button {
+        width: 100%;
+    }
+}
+
+/* DARK MODE */
+
+body.dark {
+    background: #111222;
+    color: #f1f0fa;
+}
+
+body.dark .sidebar,
+body.dark .content-card,
+body.dark .welcome,
+body.dark .white,
+body.dark .profile {
+    background: #202138;
+    color: #f1f0fa;
+    border-color: #353650;
+}
+
+body.dark .sidebar nav a {
+    color: #d0cce0;
+}
+
+body.dark .sidebar nav a.active {
+    background: #45336b;
+    color: #c9a8ff;
+}
+
+body.dark .main-content {
+    color: #f1f0fa;
+}
+
+body.dark .content-card h2,
+body.dark .topbar h2 {
+    color: #f1f0fa;
+}
+
+body.dark input {
+    background: #292a42;
+    color: white;
+    border-color: #45465e;
+}
+
+body.dark #chat {
+    background: #191a2e;
+    border-color: #353650;
+}
+
+body.dark .bot {
+    background: #393052;
+    color: #e6d9ff;
+}
+
+body.dark .user {
+    background: #214b3b;
+    color: #c8f5dc;
+}
+
+body.dark .transaction-item {
+    background: #29243d;
+    color: #e6d9ff;
+}
+
+body.dark .stat-card.white {
+    background: #202138;
+    color: white;
+}
+
+body.dark .muted,
+body.dark .topbar p {
+    color: #aaa7bd;
+}
+
+body.dark .chart-labels {
+    color: #aaa7bd;
+}
+
+body.dark .payment-form label {
+    color: #e0d9f5;
+}
+
+body.dark footer {
+    color: #aaa7bd;
+}
