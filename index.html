@@ -21,6 +21,7 @@
             <a href="#assistant">🤖 AI Assistant</a>
             <a href="#history">📜 Transactions</a>
             <a href="#analytics">📊 Analytics</a>
+            <a href="#complaint">📩 Raise Complaint</a>
         </nav>
 
         <div class="sidebar-bottom">
@@ -125,6 +126,97 @@
             </div>
         </section>
 
+<!-- RECEIVE PAYMENT SECTION -->
+<section class="content-card" id="receivePayment">
+    <h2>📲 Receive Payment</h2>
+    <p class="muted">
+        Receive payments directly through your personal UPI ID.
+    </p>
+
+    <div class="payment-form">
+
+        <label>Enter Amount (₹)</label>
+        <input
+            type="number"
+            id="receiveAmount"
+            placeholder="Enter amount"
+            min="1"
+        >
+
+        <button onclick="generateUPIQR()">
+            Generate Dynamic QR →
+        </button>
+
+        <div id="upiQR" style="margin-top:20px; text-align:center;"></div>
+
+        <p id="qrResult"></p>
+
+        <hr>
+
+        <h3>Or Pay Using UPI ID</h3>
+
+        <p id="myUpiId">9455020590@sbi</p>
+
+        <button onclick="copyMyUPI()">
+            📋 Copy UPI ID
+        </button>
+
+        <button onclick="payUsingUPI()">
+            Open UPI App →
+        </button>
+
+        <p class="muted">
+            Payments are completed in the payer's UPI app.
+            PaySmart cannot automatically verify a payment using a static QR.
+        </p>
+
+    </div>
+</section>
+
+<!-- RAISE COMPLAINT SECTION -->
+<section class="content-card" id="complaint">
+    <h2>📩 Raise a Payment Complaint</h2>
+
+    <p class="muted">
+        Sent money by mistake? Submit your complaint
+        with your Transaction ID and payment screenshot.
+    </p>
+
+    <div class="payment-form">
+
+        <label>Your Name</label>
+        <input type="text" id="complaintName"
+            placeholder="Enter your name">
+
+        <label>Your Email</label>
+        <input type="email" id="complaintEmail"
+            placeholder="Enter your email">
+
+        <label>Transaction ID (TID)</label>
+        <input type="text" id="complaintTID"
+            placeholder="Enter transaction ID">
+
+        <label>Complaint Details</label>
+        <textarea id="complaintDetails"
+            placeholder="Explain what happened..."
+            rows="4"></textarea>
+
+        <button onclick="sendComplaint()">
+            📧 Send Complaint →
+        </button>
+
+        <p class="muted">
+            Please attach your payment screenshot showing
+            the Transaction ID before sending the email.
+        </p>
+
+        <p id="complaintResult"></p>
+
+    </div>
+</section>
+
+
+
         
         <section class="content-card" id="assistant">
             <h2>🤖 AI Payment Assistant</h2>
@@ -155,7 +247,7 @@
 
         </section>
 
-        <!-- TRANSACTION HISTORY -->
+        
         <section class="content-card" id="history">
             <h2>📜 Recent Transactions</h2>
             <p class="muted">Your simulated payment records.</p>
@@ -169,11 +261,14 @@
             PaySmart | Automated UPI Assistant
             <br>
      Adarsh Tripathi | 2501640100049
+     <br>
+     2k25cse2513395@gmail.com
         </footer>
 
     </main>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="script.js"></script>
 
 </body>
